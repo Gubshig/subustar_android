@@ -1,4 +1,4 @@
-package com.example.test.AccountManagement;
+package com.example.test.MainPage;
 
 import androidx.appcompat.app.AppCompatActivity;
 

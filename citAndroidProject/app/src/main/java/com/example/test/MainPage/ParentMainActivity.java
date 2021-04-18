@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,13 +25,14 @@ public class ParentMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parent_main);
 
-        cTellParentCode.findViewById(R.id.tell_parent_code);
-        final String apiURL = "http://54.180.152.145:3000/weatherCall/auth/register/verification/confirm";
+        cTellParentCode = findViewById(R.id.tell_parent_code);
+        SharedPreferences sharedPreferences = getSharedPreferences("user_code",0);
+        String parentCode = sharedPreferences.getString("parent_code","");
+        cTellParentCode.setText(parentCode);
 
 
-        cStudentRegisterButton.findViewById(R.id.student_register_button);
+        cStudentRegisterButton = findViewById(R.id.student_register_button);
         cStudentRegisterButton.setOnClickListener(stduentregisterbuttononclicklistner());
-
 
     }
 

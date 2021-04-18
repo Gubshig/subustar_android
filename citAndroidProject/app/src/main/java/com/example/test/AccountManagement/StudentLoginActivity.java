@@ -17,12 +17,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.test.MainPage.StudentMainActivity;
 import com.example.test.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.Authenticator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,13 +37,13 @@ public class StudentLoginActivity extends AppCompatActivity {
     private EditText cStudentNameText;
     private EditText cStudentCodeNum;
 
-    private RequestQueue mQueue = Volley.newRequestQueue(getApplicationContext());
+    private RequestQueue mQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_login);
-
+        mQueue = Volley.newRequestQueue(getApplicationContext());
 
 
         cParentCodeVerificationButton = findViewById(R.id.parent_code_verification_button);

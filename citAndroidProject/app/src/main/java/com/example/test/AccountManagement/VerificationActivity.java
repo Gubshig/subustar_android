@@ -1,10 +1,12 @@
 package com.example.test.AccountManagement;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DownloadManager;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +26,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class VerificationActivity extends AppCompatActivity {
 
@@ -33,12 +36,13 @@ public class VerificationActivity extends AppCompatActivity {
 
     private String mEmail;
 
-    private RequestQueue mQueue = Volley.newRequestQueue(getApplicationContext());
+    private RequestQueue mQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verfication);
+        mQueue = Volley.newRequestQueue(getApplicationContext());
 
         mEmail = getIntent().getStringExtra("email");
 
@@ -65,35 +69,18 @@ public class VerificationActivity extends AppCompatActivity {
                             if (verificationcode.getString("msg").equals("verification_confirmed")) {
 
                                 showDialog("이메일 인증 확인", "확인되셨습니다.");
+                                SharedPreferences sharedPreferences = getSharedPreferences("user_code",0);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                editor.putString("parent_code",verificationcode.getString("parent_code"));
+
+                                editor.commit();
+
+
                             }
                             else {
                                 showDialog("이메일 인증 확인", "올바른 인증번호가 아닙니다.");
 
-                                final String apiURL1 = "http://54.180.152.145:3000/weatherCall/auth/register/verification";
-
-                                final Response.Listener<String> responseListener1 = new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
-
-                                    }
-                                };
-                                Response.ErrorListener errorListener1 = new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-
-                                    }
-                                };
-
-                                StringRequest stringRequest = new StringRequest(Request.Method.GET, apiURL1, responseListener1, errorListener1){
-                                    @Override
-                                    public Map<String, String> getHeaders() throws AuthFailureError {
-                                        HashMap<String, String> header = new HashMap<>();
-                                        header.put("email", mEmail);
-
-                                        return header;
-                                    }
-                                };
-                                mQueue.add(stringRequest);
                             }
 
                         } catch (JSONException e) {

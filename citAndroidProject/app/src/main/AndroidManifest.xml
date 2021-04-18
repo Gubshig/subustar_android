@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".MainPage.ParentMainActivity"></activity>
         <activity android:name=".AccountManagement.StudentRegisterActivity" />
-        <activity android:name=".AccountManagement.StudentMainActivity" />
+        <activity android:name=".MainPage.StudentMainActivity" />
         <activity android:name=".AccountManagement.StudentLoginActivity" />
         <activity android:name=".AccountManagement.ParentLoginActivity" />
         <activity android:name=".AccountManagement.StartActivity">

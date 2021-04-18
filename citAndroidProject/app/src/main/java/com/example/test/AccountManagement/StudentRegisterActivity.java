@@ -40,12 +40,12 @@ public class StudentRegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_register);
 
-        cStudentName.findViewById(R.id.student_name_textview);
-        cStudentAge.findViewById(R.id.student_age_textview);
-        cStudentGender.findViewById(R.id.student_gender_textview);
-        cStudentGroup.findViewById(R.id.student_group_textview);
+        cStudentName = findViewById(R.id.student_name_textview);
+        cStudentAge = findViewById(R.id.student_age_textview);
+        cStudentGender = findViewById(R.id.student_gender_textview);
+        cStudentGroup = findViewById(R.id.student_group_textview);
 
-        cStudentRegisterButton.findViewById(R.id.student_register_button2);
+        cStudentRegisterButton = findViewById(R.id.student_register_button2);
         cStudentRegisterButton.setOnClickListener(studentregisterbuttononclicklistener());
     }
 
@@ -61,12 +61,12 @@ public class StudentRegisterActivity extends AppCompatActivity {
 
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
-                            if (jsonResponse.getString("msg").equals("login_confirmed")) {
+                            if (jsonResponse.getString("msg").equals("register_confirmed")) {
 
-                                showDialog("로그인 확인", "확인되셨습니다.");
+                                showDialog("등록 확인", "확인되셨습니다.");
                             }
                             else {
-                                showDialog("로그인 확인", "실패하셨습니다.");
+                                showDialog("등록 확인", "실패하셨습니다.");
                             }
 
                         } catch (JSONException e) {
