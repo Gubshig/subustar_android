@@ -145,7 +145,7 @@ public class StudentLoginActivity extends AppCompatActivity {
                                 showDialog("로그인 확인", "로그인에 실패하셨습니다. 자녀이름과 자녀코드를 다시 확인해주세");
                             }
                             else if(ParentCodeVerification = false) {
-                                showDialog("로그인 확인", "학부모 코드를 입력해주세");
+                                showDialog("로그인 확인", "학부모 코드를 입력해주세요");
                             }
 
                         } catch (JSONException e) {
