@@ -66,7 +66,7 @@ public class ParentRegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_parent_register);
 
         mContext = getApplicationContext();
         mEmailConfirmed = false;
@@ -132,6 +132,8 @@ public class ParentRegisterActivity extends AppCompatActivity {
         alertDialog.show();
 
     }
+
+    // 이메일 형식이 올바른지 이메일을 서버로 전송하여 서버로부터 판단하는 코드
 
     private View.OnClickListener emailConfirmButtonOnClickListener(){
 
