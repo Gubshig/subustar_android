@@ -46,6 +46,7 @@ public class ParentLoginActivity extends AppCompatActivity {
         cParentLoginButton = findViewById(R.id.parent_login_button);
 
         cParentRegisterButton.setOnClickListener(parentRegisterButtonOnClickListener());
+        cParentLoginButton.setOnClickListener(parentLoginButtonOnClickListener());
 
     }
 
